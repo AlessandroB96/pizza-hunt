@@ -4,10 +4,14 @@ const dateFormat = require('../utils/dateFormat');
 const PizzaSchema = new Schema ({
 
         pizzaName: {
-            type: String
+            type: String,
+            required: 'You need to provide a pizza name!',
+            trim: true   //removes whitespace before and after input string 
         },
         createdBy: {
-            type: String
+            type: String,
+            required: 'Provide your name!',
+            trim: true
         },
         createdAt: {
             type: Date,
@@ -15,6 +19,8 @@ const PizzaSchema = new Schema ({
         },
         size: {
             type: String,
+            require: true,
+            enum: ['Personal', 'Small', 'Medium', 'Large', 'Extra Large'], //providing an array of options to choose from
             default: 'Large' 
         },
         toppings: [],   //or simply write Array in place of brackets
